@@ -35,8 +35,16 @@
 
 <div class="container">
     <div class="well well-sm">
+
         <strong th:text="${category.name}">Category Title</strong>
     </div>
+    <form action="/">
+        <select name="filter">
+            <option value = 1>Tablet</option>
+            <option value = 2>Deer</option>
+        </select>
+        <input type="submit" value="Filter">
+    </form>
 
     <div id="products" class="row list-group">
 
