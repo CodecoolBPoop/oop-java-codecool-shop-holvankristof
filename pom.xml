@@ -37,7 +37,11 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.5.v20170502</version>
                 <configuration>
+                    <httpConnector>
+                        <port>8888</port>
+                    </httpConnector>
                     <reload>automatic</reload>
+
                     <scanIntervalSeconds>1</scanIntervalSeconds>
                 </configuration>
             </plugin>
