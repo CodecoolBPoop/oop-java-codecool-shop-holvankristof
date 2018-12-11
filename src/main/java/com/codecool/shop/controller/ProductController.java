@@ -20,8 +20,13 @@ import java.util.Map;
 @WebServlet(urlPatterns = {"/"})
 public class ProductController extends HttpServlet {
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int filter = 1;
+        if(req.getParameter("filter") != null){
+            filter = Integer.parseInt(req.getParameter("filter"));
+        }
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
 
@@ -32,9 +37,11 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 //        context.setVariables(params);
+
+
         context.setVariable("recipient", "World");
-        context.setVariable("category", productCategoryDataStore.find(1));
-        context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(1)));
+        context.setVariable("category", productCategoryDataStore.find(filter));
+        context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(filter)));
         engine.process("product/index.html", context, resp.getWriter());
     }
 
