@@ -73,7 +73,9 @@ public class ProductController extends HttpServlet {
             List<Product> filteredProducts = new ArrayList<>();
             for(Product product : unfilteredProducts){
                 if(product.getSupplier().getName().equals(supplierdao.find(supplierFilter).getName())){
-                    filteredProducts.add(product);
+                    if(product.getProductCategory().getName().equals(productCategoryDataStore.find(categoryFilter).getName())) {
+                        filteredProducts.add(product);
+                    }
                 }
             }
             context.setVariable("products",filteredProducts);
