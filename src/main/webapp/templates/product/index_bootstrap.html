@@ -41,14 +41,13 @@
     </div>
     <form action="/">
         <label for ="category">Categories</label>
-        <div class="select" th:each="cat,iterStat : ${categories}"> </div>
         <select id= "category" name="categoryFilter">
-            <option value="0">-</option>
+            <option value="0">Select category</option>
             <option th:each="cat,iterStat : ${categories}" th:value="${cat.getId()}" th:text="${cat.getName()}"></option>
         </select>
         <label for="Supplier">Suppliers</label>
         <select id = "Supplier" name="supplierFilter">
-            <option value="0">-</option>
+            <option value="0">Select supplier</option>
             <option th:each="sup,iterStat : ${suppliers}" th:value="${sup.getId()}" th:text="${sup.getName()}"></option>
         </select>
         <input type="submit" value="Filter">
