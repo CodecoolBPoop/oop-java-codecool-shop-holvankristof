@@ -4,16 +4,17 @@ function main(){
     let cart = document.querySelector(".fa-shopping-cart");
 
     cart.addEventListener("click",function(){
-        console.log(JSON.stringify(sessionStorage));
-        let post = new XMLHttpRequest();
-        let url = "/cart";
-        let data = new FormData();
-        let json = JSON.stringify(sessionStorage)
-        post.open("POST",url);
-        data.set("products",json);
-        console.log(data);
-        post.send(data);
-        // window.location.replace(url);
+        for(let i = 0; i <sessionStorage.length;i++){
+            let itemName = sessionStorage.key(i);
+            let itemCount = sessionStorage.getItem(sessionStorage.key(i));
+            let orderItem = document.createElement("input");
+            orderItem.type = "hidden";
+            orderItem.name = itemName;
+            orderItem.value = itemCount;
+            cart.appendChild(orderItem);
+
+        }
+
 
     });
     for(let button of addButtons){
@@ -24,11 +25,16 @@ function main(){
             let productId = button.dataset.id;
             updateSession(productId)
 
+
         })
     }
     function updateSession(productId) {
+
+
         if(sessionStorage.getItem(productId) === null){
             sessionStorage.setItem(productId,"1");
+
+
 
         }else{
             let productCount = sessionStorage.getItem(productId);
