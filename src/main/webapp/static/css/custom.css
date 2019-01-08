@@ -1,6 +1,15 @@
 .glyphicon {
     margin-right:5px;
 }
+
+.container {
+    padding: 2px 2px;
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
 .thumbnail
 {
     margin-bottom: 20px;
@@ -13,39 +22,16 @@
 {
     margin-top: 10px;
 }
-.item.list-group-item
-{
-    float: none;
+.card-deck {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
     width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.item.list-group-item .list-group-image
-{
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-}
-.item.list-group-item .caption
-{
-    padding: 9px 9px 0px 9px;
-}
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
-}
-
-.item.list-group-item:before, .item.list-group-item:after
-{
-    display: table;
-    content: " ";
+.card-deck:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .item.list-group-item img
@@ -61,6 +47,13 @@
     margin: 0 0 11px;
 }
 
+.fa-shopping-cart{
+    float: right;
+}
 .cart{
     float: right;
+}
+
+.item {
+    padding: 10px;
 }
