@@ -34,6 +34,26 @@ img {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+.fa-shopping-cart{
+    float: right;
+}
+.cart{
+    float: right;
+}
+
 .item {
     padding: 10px;
 }
