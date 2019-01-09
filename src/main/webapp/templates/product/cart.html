@@ -42,19 +42,19 @@
         </tr>
         </thead>
         <div class="loop" th:each="prod,iterStat : ${relevantProducts}">
-            <tr>
+            <tr class="table_row">
                 <td th:text="${prod.getName()}">nsme</td>
-                <td th:text="${prod.getPrice()}">g</td>
+                <td class="single_price" th:text="${prod.getPrice()}">g</td>
                 <div class="hashLoop" th:each="entry : ${productData}">
                     <div class="if" th:if="${prod.getId() == entry.getKey()}">
-                        <td th:text="${entry.getValue()}">1</td>
+                        <td class="product_count" th:text="${entry.getValue()}">1</td>
                         <div th:with="result=${entry.getValue() * prod.getDefaultPrice()}">
                             <td  class="sum_price" th:text="${numbers.formatDecimal(result,0,2)}"></td>
                         </div>
 
                     </div>
                 </div>
-                <th><i class="fa fa-arrow-circle-down"></i><i class=" fa fa-arrow-circle-up"></i></th>
+                <th><i class="fa fa-arrow-circle-down"></i><i class="fa fa-arrow-circle-up"></i></th>
 
             </tr>
         </div>
