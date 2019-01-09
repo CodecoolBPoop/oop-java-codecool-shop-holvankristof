@@ -41,15 +41,12 @@ public class CartController extends HttpServlet{
         while(i.hasNext()){
             String key = (String) i.next();
             productData.put(Integer.parseInt(key), Integer.parseInt(((String[]) params.get( key ))[ 0 ]));
-            System.out.println(key + ((String[]) params.get( key ))[ 0 ] );
+
         }
         for (Integer key : productData.keySet()) {
             relevantProducts.add(productDataStore.find(key));
         }
-        System.out.println(productData.toString());
-        for(Product product : relevantProducts){
-            System.out.println(product.getName());
-        }
+
         context.setVariable("relevantProducts",relevantProducts);
         context.setVariable("productData",productData);
         context.setVariable("numbers",numbers);
