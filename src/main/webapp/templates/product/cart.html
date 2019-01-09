@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <!--font awsome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <script src="/static/js/util.js" defer></script>
     <script src="/static/js/cart.js" defer></script>
 
 </head>
@@ -32,6 +33,7 @@
     <table>
         <thead>
         <tr>
+            <th>Product ID</th>
             <th>Product Name</th>
             <th>Product Price</th>
             <th>Count</th>
@@ -43,7 +45,8 @@
         </thead>
         <div class="loop" th:each="prod,iterStat : ${relevantProducts}">
             <tr class="table_row">
-                <td th:text="${prod.getName()}">nsme</td>
+                <td class="product_id" th:text="${prod.getId()}">0</td>
+                <td th:text="${prod.getName()}">name</td>
                 <td class="single_price" th:text="${prod.getPrice()}">g</td>
                 <div class="hashLoop" th:each="entry : ${productData}">
                     <div class="if" th:if="${prod.getId() == entry.getKey()}">

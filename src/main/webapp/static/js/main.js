@@ -28,20 +28,7 @@ function main(){
 
         })
     }
-    function updateSession(productId) {
 
-
-        if(sessionStorage.getItem(productId) === null){
-            sessionStorage.setItem(productId,"1");
-
-
-
-        }else{
-            let productCount = sessionStorage.getItem(productId);
-            let temp = parseInt(productCount) + 1;
-            sessionStorage.setItem(productId,temp);
-        }
-    };
 }
 
 main();
