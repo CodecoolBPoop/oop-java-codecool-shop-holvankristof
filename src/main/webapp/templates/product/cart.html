@@ -22,11 +22,13 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <!--font awsome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
-    <script src="/static/js/main.js" defer></script>
+    <script src="/static/js/cart.js" defer></script>
 
 </head>
 <body>
-    <h1>Cart content</h1>
+    <div class="jumbotron text-center">
+        <h1>Shopping cart</h1>
+    </div>
     <table>
         <thead>
         <tr>
@@ -34,6 +36,7 @@
             <th>Product Price</th>
             <th>Count</th>
             <th>Sum</th>
+            <th>Add/remove</th>
 
 
         </tr>
@@ -46,16 +49,17 @@
                     <div class="if" th:if="${prod.getId() == entry.getKey()}">
                         <td th:text="${entry.getValue()}">1</td>
                         <div th:with="result=${entry.getValue() * prod.getDefaultPrice()}">
-                            <td th:text="${numbers.formatDecimal(result,0,2)}"></td>
+                            <td  class="sum_price" th:text="${numbers.formatDecimal(result,0,2)}"></td>
                         </div>
 
                     </div>
                 </div>
+                <th><i class="fa fa-arrow-circle-down"></i><i class=" fa fa-arrow-circle-up"></i></th>
 
             </tr>
         </div>
-
     </table>
+    <h2>Total Price: <span class="total_price"></span><span th:text="${relevantProducts.get(0).getDefaultCurrency()}"></span></h2>
 
     <div th:replace="footer.html :: copy"></div>
 </body>
