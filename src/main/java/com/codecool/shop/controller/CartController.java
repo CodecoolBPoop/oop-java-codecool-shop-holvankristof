@@ -10,6 +10,7 @@ import com.codecool.shop.model.Supplier;
 import com.codecool.shop.model.ProductCategory;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.expression.Numbers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,7 @@ public class CartController extends HttpServlet{
         List<Product> relevantProducts = new ArrayList<>();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        Numbers numbers = new Numbers(Locale.US);
 
         while(i.hasNext()){
             String key = (String) i.next();
@@ -50,6 +52,7 @@ public class CartController extends HttpServlet{
         }
         context.setVariable("relevantProducts",relevantProducts);
         context.setVariable("productData",productData);
+        context.setVariable("numbers",numbers);
 
 
 

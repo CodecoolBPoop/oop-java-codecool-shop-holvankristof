@@ -46,7 +46,7 @@
                     <div class="if" th:if="${prod.getId() == entry.getKey()}">
                         <td th:text="${entry.getValue()}">1</td>
                         <div th:with="result=${entry.getValue() * prod.getDefaultPrice()}">
-                            <td th:text="${result}"></td>
+                            <td th:text="${numbers.formatDecimal(result,0,2)}"></td>
                         </div>
 
                     </div>
