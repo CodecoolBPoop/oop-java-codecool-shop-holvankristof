@@ -7,7 +7,6 @@ function main(){
     let productIds = document.querySelectorAll(".product_id");
     let totalPriceElement = document.querySelector(".total_price");
 
-
     function round(value, decimals) {
         return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 

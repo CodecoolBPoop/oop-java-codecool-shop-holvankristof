@@ -14,20 +14,8 @@ function main(){
 
     });
 
-    cart.addEventListener("click",function(){
-        for(let i = 0; i <sessionStorage.length;i++){
-            let itemName = sessionStorage.key(i);
-            let itemCount = sessionStorage.getItem(sessionStorage.key(i));
-            let orderItem = document.createElement("input");
-            orderItem.type = "hidden";
-            orderItem.name = itemName;
-            orderItem.value = itemCount;
-            cart.appendChild(orderItem);
+   convertSessionDataToForm(cart);
 
-        }
-
-
-    });
     for(let button of addButtons){
         button.addEventListener("click", function () {
             let value = parseInt(counter.innerHTML);

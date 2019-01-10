@@ -24,3 +24,21 @@ function deleteItemFromSession(productId){
         sessionStorage.setItem(productId,temp)
     }
 }
+
+function convertSessionDataToForm(element) {
+    element.addEventListener("click",function(){
+        for(let i = 0; i <sessionStorage.length;i++){
+            let itemName = sessionStorage.key(i);
+            let itemCount = sessionStorage.getItem(sessionStorage.key(i));
+            let orderItem = document.createElement("input");
+            orderItem.type = "hidden";
+            orderItem.name = itemName;
+            orderItem.value = itemCount;
+            element.appendChild(orderItem);
+
+        }
+
+
+    });
+
+}
