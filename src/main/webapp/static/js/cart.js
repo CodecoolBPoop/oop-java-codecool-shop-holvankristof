@@ -14,6 +14,7 @@ function main(){
     }
     window.addEventListener("load",function ()  {
 
+
         let totalPrice = 0;
         for(let price of sumPrices){
             let temp = parseFloat(price.textContent);
@@ -55,7 +56,11 @@ function main(){
                 sumPrices[i].innerHTML = "" + round(sumPriceTemp,3 );
                 productCounts[i].innerHTML = "" + productCountTemp;
                 totalPriceTemp -= singlePriceTemp;
+                if(totalPriceTemp  < 0){
+                    totalPriceElement.innerHTML = "0";
+                }else{
                 totalPriceElement.innerHTML = "" + totalPriceTemp + "  ";
+                    }
                 deleteItemFromSession(tempProductID)
             }
         })
