@@ -57,3 +57,17 @@ img {
 .item {
     padding: 10px;
 }
+
+table{
+    width: 100%;
+}
+
+.checkout{
+    float: right;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}

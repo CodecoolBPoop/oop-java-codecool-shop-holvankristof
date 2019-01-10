@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <!--font awsome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <script src="/static/js/util.js" defer></script>
     <script src="/static/js/cart.js" defer></script>
 
 </head>
@@ -32,34 +33,40 @@
     <table>
         <thead>
         <tr>
+            <th>Product ID</th>
             <th>Product Name</th>
             <th>Product Price</th>
             <th>Count</th>
             <th>Sum</th>
-            <th>Add/remove</th>
+            <th>Remove/add</th>
 
 
         </tr>
         </thead>
         <div class="loop" th:each="prod,iterStat : ${relevantProducts}">
-            <tr>
-                <td th:text="${prod.getName()}">nsme</td>
-                <td th:text="${prod.getPrice()}">g</td>
+            <tr class="table_row">
+                <td class="product_id" th:text="${prod.getId()}">0</td>
+                <td th:text="${prod.getName()}">name</td>
+                <td class="single_price" th:text="${prod.getPrice()}">g</td>
                 <div class="hashLoop" th:each="entry : ${productData}">
                     <div class="if" th:if="${prod.getId() == entry.getKey()}">
-                        <td th:text="${entry.getValue()}">1</td>
+                        <td class="product_count" th:text="${entry.getValue()}">1</td>
                         <div th:with="result=${entry.getValue() * prod.getDefaultPrice()}">
                             <td  class="sum_price" th:text="${numbers.formatDecimal(result,0,2)}"></td>
                         </div>
 
                     </div>
                 </div>
-                <th><i class="fa fa-arrow-circle-down"></i><i class=" fa fa-arrow-circle-up"></i></th>
+                <th><i class="fas fa-arrow-circle-down fa-2x"></i><i class="fas fa-arrow-circle-up fa-2x"></i></th>
 
             </tr>
         </div>
     </table>
-    <h2>Total Price: <span class="total_price"></span><span th:text="${relevantProducts.get(0).getDefaultCurrency()}"></span></h2>
+    <h2>Total Price: <span class="total_price"></span><span th:text="${relevantProducts.get(0).getDefaultCurrency()}"></span>
+        <form action="/checkout"  method="post" class="checkout">
+            <input type="submit" class="checkout_button" value="Checkout">
+        </form>
+    </h2>
 
     <div th:replace="footer.html :: copy"></div>
 </body>
