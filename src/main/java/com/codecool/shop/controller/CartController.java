@@ -38,16 +38,8 @@ public class CartController extends HttpServlet{
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Numbers numbers = new Numbers(Locale.US);
 
-        while(i.hasNext()){
-            String key = (String) i.next();
-            productData.put(Integer.parseInt(key), Integer.parseInt(((String[]) params.get( key ))[ 0 ]));
-
-        }
-        for (Integer key : productData.keySet()) {
-            relevantProducts.add(productDataStore.find(key));
-        }
-
-        context.setVariable("relevantProducts",relevantProducts);
+        FormToProductsConverter converter = new FormToProductsConverter();
+        converter.ConvertPostDataToProducts(context,params,productData,i,relevantProducts,productDataStore);
         context.setVariable("productData",productData);
         context.setVariable("numbers",numbers);
 
