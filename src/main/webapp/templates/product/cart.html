@@ -57,12 +57,16 @@
 
                     </div>
                 </div>
-                <th><i class="fa fa-arrow-circle-down"></i><i class="fa fa-arrow-circle-up"></i></th>
+                <th><i class="fas fa-arrow-circle-down fa-2x"></i><i class="fas fa-arrow-circle-up fa-2x"></i></th>
 
             </tr>
         </div>
     </table>
-    <h2>Total Price: <span class="total_price"></span><span th:text="${relevantProducts.get(0).getDefaultCurrency()}"></span></h2>
+    <h2>Total Price: <span class="total_price"></span><span th:text="${relevantProducts.get(0).getDefaultCurrency()}"></span>
+        <form action="/checkout" method="post" class="checkout">
+            <input type="submit" value="Checkout">
+        </form>
+    </h2>
 
     <div th:replace="footer.html :: copy"></div>
 </body>
