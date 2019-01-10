@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
     <!--font awsome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <script src="/static/js/payment.js" defer></script>
 
 </head>
 
@@ -30,7 +31,39 @@
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
 </div>
-<h1 th:text="${total_price}"></h1>
+<div class="container">
+    <form class="checkout_form" method="get" action="/">
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationDefault03">Card holder</label>
+                <input type="text" class="form-control" id="validationDefault03" placeholder="Your name" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Card Number</label>
+                <input type="text" class="form-control" id="validationDefault04" maxlength="19" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">CCV</label>
+                <input type="password" class="form-control" id="validationDefault06" maxlength="3" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Pay Pal username</label>
+                <input type="text" class="form-control" id="validationDefault01"  >
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Pay pal password</label>
+                <input type="password" class="form-control" id="validationDefault02" maxlength= >
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">PAY</button>
+    </form>
+    <div th:replace="footer.html :: copy"></div>
+    <div class ="checkout"> <h1> <span>Total Price: </span> <div th:text="${total_price}"></div><span th:text="${relevantProducts.get(0).getDefaultCurrency()}" ></span> </h1></div>
+</div>
+
 
 </body>
 </html>
