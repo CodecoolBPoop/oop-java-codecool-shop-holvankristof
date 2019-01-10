@@ -37,7 +37,6 @@ public class CartController extends HttpServlet{
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         Numbers numbers = new Numbers(Locale.US);
-
         FormToProductsConverter converter = new FormToProductsConverter();
         converter.ConvertPostDataToProducts(context,params,productData,i,relevantProducts,productDataStore);
         context.setVariable("productData",productData);
@@ -51,12 +50,7 @@ public class CartController extends HttpServlet{
 
 
     }
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-        engine.process("product/cart.html", context, resp.getWriter());
-    }
+
 }
 
 
